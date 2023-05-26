@@ -1,12 +1,19 @@
 import Image from 'next/image';
 import { Item } from '@/types/Item';
 import Shipping from '@/assets/images/shipping.png';
+import Link from 'next/link';
 
 export default function Item(props: Item) {
   return (
-    <a href="#" className="flex p-4 space-x-4 bg-white border-b border-gray-200 last:border-0">
+    <Link
+      href={{
+        pathname: '/items/[id]',
+        query: { id: props.id },
+      }}
+      className="flex p-4 space-x-4 bg-white border-b border-gray-200 last:border-0"
+    >
       <div className="relative flex flex-shrink-0 w-[11.25rem] h-[11.25rem] aspect-square overflow-hidden rounded">
-        <Image src={props.picture} alt={props.title} fill />
+        <Image className="object-contain" src={props.picture} alt={props.title} fill />
       </div>
       <div className="grid grid-cols-5 gap-4 w-full">
         <div className="col-span-4 flex flex-col space-y-8 flex-1 py-4">
@@ -24,6 +31,6 @@ export default function Item(props: Item) {
           Capital Federal
         </span>
       </div>
-    </a>
+    </Link>
   )
 }
