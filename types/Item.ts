@@ -9,7 +9,7 @@ type Price = {
   decimals: string;
 }
 
-type Item = {
+export type Item = {
   id: string;
   title: string;
   price: Price;
